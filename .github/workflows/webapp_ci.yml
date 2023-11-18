@@ -14,21 +14,19 @@ jobs:
   build-and-test:
     runs-on: ubuntu-latest
 
-    services:
-      app:
-        image: docker-compose
-        ports:
-          - 5000:5000
-          - 5001:5001
-
     steps:
       - name: Check out repository
         uses: actions/checkout@v3
 
-      - name: Set up Python
-        uses: actions/setup-python@v3
-        with:
-          python-version: '3.x'
+      - name: Set up Docker environment
+        run: |
+          # Install Docker Compose if not already installed (GitHub hosted runners usually have it)
+          if ! type "docker-compose" > /dev/null; then
+            sudo curl -L "https://github.com/docker/compose/releases/download/v2.2.3/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+            sudo chmod +x /usr/local/bin/docker-compose
+          fi
+          # Now you can use docker-compose commands
+          docker-compose --version
 
       - name: Build and run containers
         run: docker-compose up -d --scale web1=2 --scale web2=2
