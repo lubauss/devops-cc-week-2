@@ -2,18 +2,17 @@ version: "3.7"
 services:
   web1:
     build: ./quote_gen
-    container_name: gen
     ports:
-      - "5000:5000"
+      - "5000" # Only container port specified
     volumes:
       - ./quote_gen:/app
     environment:
       - FLASK_ENV=development
+
   web2:
     build: ./quote_disp
-    container_name: disp
     ports:
-      - "5001:5001"
+      - "5001" # Only container port specified
     depends_on:
       - web1
     volumes:
