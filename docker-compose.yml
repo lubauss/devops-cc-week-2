@@ -3,7 +3,7 @@ services:
   web1:
     build: ./quote_gen
     ports:
-      - "5000" # Only container port specified
+      - "5000" # Docker Compose will handle host port assignments for scaled instances
     volumes:
       - ./quote_gen:/app
     environment:
@@ -12,10 +12,13 @@ services:
   web2:
     build: ./quote_disp
     ports:
-      - "5001" # Only container port specified
+      - "5001" # Docker Compose will handle host port assignments for scaled instances
     depends_on:
       - web1
     volumes:
       - ./quote_disp:/app
     environment:
       - FLASK_DEBUG=1
+
+# just run the command 'docker-compose up -d --scale web1=2 --scale web2=2' 
+# In this case it creates 2 replicas of our web applications.
