@@ -31,7 +31,7 @@ def test_home_endpoint(client):
     response = client.get("/")
     assert response.status_code == 200
     # Check if the response contains part of the expected HTML
-    assert '<title>Quote Gen Service</title>' in response.data.decode('utf-8')
+    assert '<title>Quote Gen Servic</title>' in response.data.decode('utf-8')
 
 def test_quote_endpoint(client):
     """

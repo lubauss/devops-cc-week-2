@@ -43,7 +43,7 @@ jobs:
 
       - name: Run tests
         run: |
-          python -m pytest -v tests --cov=quote_gen --cov=quote_disp --junitxml=pytest.xml -v tests | tee ./pytest-coverage.txt
+          python -m pytest -v tests --cov=quote_gen --cov=quote_disp --junitxml=pytest.xml --cov-report=term-missing:skip-covered  -v tests | tee ./pytest-coverage.txt
         env:
           PYTHONPATH: ${{ github.workspace }}
 
