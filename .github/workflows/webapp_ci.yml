@@ -35,7 +35,7 @@ jobs:
 
       - name: Run tests
         run: |
-          python -m pytest -v tests --cov=src --junitxml=pytest.xml -v tests | tee ./pytest-coverage.txt
+          python -m pytest -v tests --cov=quote_gen --cov=quote_disp --junitxml=pytest.xml -v tests | tee ./pytest-coverage.txt
 
       - name: Pytest coverage comment
         uses: MishaKav/pytest-coverage-comment@main
