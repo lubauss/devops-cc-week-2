@@ -41,11 +41,9 @@ jobs:
           python -m pip install --upgrade pip
           pip install requests pytest pytest-cov pytest-flask pytest-mock
 
-      - name: Run tests
+      - name: Build coverage file
         run: |
-          python -m pytest -v tests --cov=quote_gen --cov=quote_disp --junitxml=pytest.xml --cov-report=term-missing:skip-covered  -v tests | tee ./pytest-coverage.txt
-        env:
-          PYTHONPATH: ${{ github.workspace }}
+          pytest --junitxml=pytest.xml --cov-report=term-missing:skip-covered --cov=quote_gen tests/ --cov=quote_disp tests/ | tee pytest-coverage.txt
 
       - name: Pytest coverage comment
         uses: MishaKav/pytest-coverage-comment@main
