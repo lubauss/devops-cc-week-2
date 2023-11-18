@@ -1,0 +1,42 @@
+# .github/workflows/webapp_ci.yml
+
+name: Web App CI/CD Pipeline
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    services:
+      app:
+        image: docker-compose
+        ports:
+          - 5000:5000
+          - 5001:5001
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: '3.x'
+
+      - name: Build and run containers
+        run: docker-compose up -d --scale web1=2 --scale web2=2
+
+      - name: Run tests
+        run: |
+          python -m pytest -v tests --cov=src --junitxml=pytest.xml -v tests | tee ./pytest-coverage.txt
+
+      - name: Pytest coverage comment
+        uses: MishaKav/pytest-coverage-comment@main
+        with:
+          pytest-coverage-path: ./pytest-coverage.txt
+          junitxml-path: ./pytest.xml
