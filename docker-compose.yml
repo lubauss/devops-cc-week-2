@@ -7,7 +7,7 @@ services:
     volumes:
       - ./quote_gen:/app
     environment:
-      - FLASK_ENV=development
+      - FLASK_DEBUG=1
 
   web2:
     build: ./quote_disp
@@ -18,4 +18,4 @@ services:
     volumes:
       - ./quote_disp:/app
     environment:
-      - FLASK_ENV=development
+      - FLASK_DEBUG=1
