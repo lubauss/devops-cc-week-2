@@ -43,11 +43,12 @@ jobs:
 
       - name: Run tests
         run: |
-          python -m pytest -v tests --cov=quote_gen --cov=quote_disp --cov-report "xml:coverage.xml" -v tests | tee ./pytest-coverage.txt
+          python -m pytest -v tests --cov=quote_gen --cov=quote_disp --cov-report term-missing tests/ --junitxml=pytest.xml -v tests | tee ./pytest-coverage.txt
         env:
           PYTHONPATH: ${{ github.workspace }}
 
       - name: Pytest coverage comment
         uses: MishaKav/pytest-coverage-comment@main
         with:
-          pytest-xml-coverage-path: ./coverage.xml
+          pytest-coverage-path: ./pytest-coverage.txt
+          junitxml-path: ./pytest.xml
