@@ -21,7 +21,7 @@ def test_home_endpoint(client):
     """Test the / endpoint to ensure it renders the home page"""
     response = client.get("/")
     assert response.status_code == 200
-    assert b"<title>Quote Display Service</title>" in response.data
+    assert b"<title>Quote Display Servic</title>" in response.data
 
 def test_get_quote_endpoint(client, mocker):
     """Test the /get_quote endpoint to ensure it displays a quote"""

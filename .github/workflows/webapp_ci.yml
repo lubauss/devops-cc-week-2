@@ -43,7 +43,7 @@ jobs:
 
       - name: Run tests
         run: |
-          python -m pytest -v tests --cov=quote_gen --cov=quote_disp --cov-report term-missing tests/ --junitxml=pytest.xml -v tests | tee ./pytest-coverage.txt
+          python -m pytest -v tests --cov=quote_gen --cov=quote_disp --cov-report term-missing tests/ --junitxml=pytest.xml -v tests | tee ./pytest-coverage.txt; exit ${PIPESTATUS[0]}
         env:
           PYTHONPATH: ${{ github.workspace }}
 
