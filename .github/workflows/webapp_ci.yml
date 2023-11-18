@@ -18,6 +18,11 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v3
 
+      - name: Set up Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: '3.x'
+
       - name: Set up Docker environment
         run: |
           # Install Docker Compose if not already installed (GitHub hosted runners usually have it)
@@ -30,10 +35,17 @@ jobs:
 
       - name: Build and run containers
         run: docker-compose up -d --scale web1=2 --scale web2=2
+      
+      - name: Install Testing Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pytest pytest-cov pytest-flask pytest-mock
 
       - name: Run tests
         run: |
           python -m pytest -v tests --cov=quote_gen --cov=quote_disp --junitxml=pytest.xml -v tests | tee ./pytest-coverage.txt
+        env:
+          PYTHONPATH: ${{ github.workspace }}
 
       - name: Pytest coverage comment
         uses: MishaKav/pytest-coverage-comment@main
