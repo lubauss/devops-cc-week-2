@@ -1,6 +1,6 @@
 # .github/workflows/webapp_ci.yml
 
-name: Web App CI/CD Pipeline
+name: Web App CI Pipeline
 
 on:
   push:
