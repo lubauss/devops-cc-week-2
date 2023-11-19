@@ -1,0 +1,54 @@
+# .github/workflows/webapp_ci.yml
+
+name: Web App CI Pipeline
+
+on:
+  push:
+    branches: 
+      - main
+  pull_request:
+    branches: 
+      - "*"
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: '3.x'
+
+      - name: Set up Docker environment
+        run: |
+          # Install Docker Compose if not already installed (GitHub hosted runners usually have it)
+          if ! type "docker-compose" > /dev/null; then
+            sudo curl -L "https://github.com/docker/compose/releases/download/v2.2.3/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+            sudo chmod +x /usr/local/bin/docker-compose
+          fi
+          # Now you can use docker-compose commands
+          docker-compose --version
+
+      - name: Build and run containers
+        run: docker-compose up -d --scale web1=2 --scale web2=2
+      
+      - name: Install Testing Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests pytest pytest-cov pytest-flask pytest-mock
+
+      - name: Run tests
+        run: |
+          python -m pytest -v tests --cov=quote_gen --cov=quote_disp --cov-report term-missing tests/ --junitxml=pytest.xml -v tests | tee ./pytest-coverage.txt; exit ${PIPESTATUS[0]}
+        env:
+          PYTHONPATH: ${{ github.workspace }}
+
+      - name: Pytest coverage comment
+        uses: MishaKav/pytest-coverage-comment@main
+        with:
+          pytest-coverage-path: ./pytest-coverage.txt
+          junitxml-path: ./pytest.xml
