@@ -6,22 +6,22 @@
 
 In this project, the aim was to containerize 📦 two Flask apps: one for generating random quotes 📜 and another for displaying them 🖥️. The challenge was to orchestrate these services using Docker Compose, creating a basic yet functional website.
 
-### 🌟 Milestones
-1. **🐳 Containerization of Microservices**: Mastered the art of containerizing Flask apps, showcasing Docker proficiency.
-2. **🏗️ Docker Image Building**: Excelled in Docker image creation, a crucial skill in containerization.
-3. **🚢 Container Deployment**: Deployed containers effectively, ensuring isolated environments for each service.
-4. **🔗 Network Establishment**: Established seamless Docker networks for inter-service communication.
-5. **🧩 Docker Compose Orchestration**: Demonstrated skill in orchestrating multi-container applications with Docker Compose.
-6. **🛠️ Efficient Local Development**: Developed a setup for efficient local development and testing of microservices.
-7. **⚙️ Optional Advanced Features**: Tackled advanced Docker features like service scaling and automated testing.
+### <span style="color:orange"><strong>🌟 Milestones</strong></span>
+1. <span style="color:orange"><strong>🐳 Containerization of Microservices</strong></span>: Mastered the art of containerizing Flask apps, showcasing Docker proficiency.
+2. <span style="color:orange"><strong>🏗️ Docker Image Building</strong></span>: Excelled in Docker image creation, a crucial skill in containerization.
+3. <span style="color:orange"><strong>🚢 Container Deployment</strong></span>: Deployed containers effectively, ensuring isolated environments for each service.
+4. <span style="color:orange"><strong>🔗 Network Establishment</strong></span>: Established seamless Docker networks for inter-service communication.
+5. <span style="color:orange"><strong>🧩 Docker Compose Orchestration</strong></span>: Demonstrated skill in orchestrating multi-container applications with Docker Compose.
+6. <span style="color:orange"><strong>🛠️ Efficient Local Development</strong></span>: Developed a setup for efficient local development and testing of microservices.
+7. <span style="color:orange"><strong>⚙️ Optional Advanced Features</strong></span>: Tackled advanced Docker features like service scaling and automated testing.
 
-### 🚧 Challenges
-1. **🔀 Microservices Segregation**: Overcame the complexity of transitioning from a monolithic structure to microservices.
-2. **🌐 Networking Between Services**: Successfully managed networking challenges between containerized services.
-3. **🎭 Orchestration Complexity**: Skillfully managed the complexities of orchestrating multiple dependent containers.
-4. **🪞 Consistency in Environments**: Maintained environment consistency across development and production stages.
-5. **🔧 Local Development Workflow**: Improved the workflow for local development, a challenge with interdependent services.
-6. **📈 Advanced Orchestration**: Overcame advanced orchestration challenges like scaling and automation.
+### <span style="color:violet"><strong>🚧 Challenges</strong></span>
+1. <span style="color:violet"><strong>🔀 Microservices Segregation</strong></span>: Overcame the complexity of transitioning from a monolithic structure to microservices.
+2. <span style="color:violet"><strong>🌐 Networking Between Services</strong></span>: Successfully managed networking challenges between containerized services.
+3. <span style="color:violet"><strong>🎭 Orchestration Complexity</strong></span>: Skillfully managed the complexities of orchestrating multiple dependent containers.
+4. <span style="color:violet"><strong>🪞 Consistency in Environments</strong></span>: Maintained environment consistency across development and production stages.
+5. <span style="color:violet"><strong>🔧 Local Development Workflow</strong></span>: Improved the workflow for local development, a challenge with interdependent services.
+6. <span style="color:violet"><strong>📈 Advanced Orchestration</strong></span>: Overcame advanced orchestration challenges like scaling and automation.
 
 ## Self Assessment
 
