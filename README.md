@@ -1,5 +1,7 @@
 # 🚀 Uplimit DevOps Crash Course Project 2 - "Deploying Multiple Dependent Microservices at FaceTok"
 
+![Demonstration of App](/assets/demo.gif)
+
 ## 🎯 Goal
 
 In this project, the aim was to containerize 📦 two Flask apps: one for generating random quotes 📜 and another for displaying them 🖥️. The challenge was to orchestrate these services using Docker Compose, creating a basic yet functional website.
